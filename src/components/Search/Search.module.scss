@@ -1,0 +1,14 @@
+.search {
+  text-align: center;
+}
+
+.form {
+  margin-top: 25px;
+  & input {
+    width: 450px;
+  }
+  & button {
+    margin-left: 20px;
+    margin-top: 7px;
+  }
+}
