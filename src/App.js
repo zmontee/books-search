@@ -3,6 +3,7 @@ import Main from './components/Main';
 import { Route, Switch } from "react-router-dom";
 import {createTheme, MuiThemeProvider} from "@material-ui/core";
 import axios from "axios";
+import Content from "./components/Content";
 
 const theme = createTheme({
     palette: {
@@ -20,6 +21,7 @@ function App() {
           <div className='App'>
               <Switch>
                   <Route exact path='/' component={Main}/>
+                  <Route exact path='/search/:book' component={Content}/>
               </Switch>
           </div>
       </MuiThemeProvider>

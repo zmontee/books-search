@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import s from './Search.module.scss';
-import {Button, TextField, Typography} from '@material-ui/core';
+import {Button, TextField} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import {connect} from "react-redux";
 import {getBooks} from "../../redux/actions/dataAction";
+import {NavLink} from "react-router-dom";
 
 const Search = (props) => {
     const [value, setValue] = useState('');
@@ -12,32 +13,25 @@ const Search = (props) => {
         setValue(event.target.value);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        props.getBooks(value);
-    }
-
     return (
         <div className={s.search}>
-            <Typography variant='h3'>
-                TYPE THE BOOK OR THE AUTHOR NAME
-            </Typography>
-            <form className={s.form} onSubmit={handleSubmit}>
+            <form className={s.form}>
                     <TextField id="book"
                                label="Book or Author"
                                name="book"
                                value={value}
                                onChange={handleChange}
                     />
-                    <Button type="submit"
-                            color="primary"
-                            variant="contained"
-                            size="large"
-                            startIcon={<SearchIcon />}
-                    >
-                        SEARCH
-                    </Button>
+                    <NavLink to={`/search/${value}`}>
+                        <Button type="submit"
+                                color="primary"
+                                variant="contained"
+                                size="large"
+                                startIcon={<SearchIcon />}
+                        >
+                            SEARCH
+                        </Button>
+                    </NavLink>
             </form>
         </div>
     )

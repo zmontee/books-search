@@ -1,4 +1,4 @@
-import {SET_BOOKS, SET_TOTAL_BOOKS_COUNT} from "../types";
+import {ADD_BOOK, SET_BOOKS, SET_TOTAL_BOOKS_COUNT} from "../types";
 
 const initialState = {
     books: [],
@@ -16,6 +16,11 @@ export const dataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 totalBooksCount: action.payload
+            }
+        case ADD_BOOK:
+            return {
+                ...state,
+                books: [...state.books, action.item]
             }
         default:
             return state
